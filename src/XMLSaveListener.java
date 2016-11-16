@@ -1,10 +1,8 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.StringWriter;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,24 +15,23 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-public class XMLVerifyListener implements ActionListener{
+public class XMLSaveListener implements ActionListener {
 	
 	private JTextArea txt;
 	private String fileText;
 	private final static Logger logger = Logger.getLogger(XMLVerifyListener.class.getName());
 
-	public XMLVerifyListener(JTextArea txt){
+	public XMLSaveListener(JTextArea txt){
 		this.txt = txt;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		parseFile();
+		saveFile();
 	}
 	
-	public void parseFile(){
+	public void saveFile(){
 		DocumentBuilderFactory docFact = DocumentBuilderFactory.newInstance();
 		docFact.setNamespaceAware(true);
 		docFact.setValidating(false);
@@ -46,22 +43,6 @@ public class XMLVerifyListener implements ActionListener{
 			docBuild.setErrorHandler(new ParseErrorHandler());
 
 			Document doc = docBuild.parse(FileStorage.f);
-			doc.getDocumentElement().normalize();	//Collapses text on multiple lines.		
-			
-			DOMSource dSource = new DOMSource(doc);	//DOM tree
-			StringWriter writer = new StringWriter();	
-			StreamResult result = new StreamResult(writer);
-			TransformerFactory tf = TransformerFactory.newInstance();
-			Transformer transformer = tf.newTransformer();	//changes DOM into results
-			transformer.transform(dSource, result);
-			txt.setText(writer.toString());
-
-			
-
-			txt.setForeground(Color.BLACK);
-
-
-			System.out.println("Everything is a-okay :)");
 		}
 		catch(Exception e){
 			txt.setForeground(Color.RED);

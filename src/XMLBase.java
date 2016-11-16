@@ -54,7 +54,6 @@ public class XMLBase extends JFrame {
 		
 		JTextArea textPane = new JTextArea();
 		scrollPane.add(textPane);
-		textPane.setEditable(false);
 		
 		FileChosenListener fileListner = new FileChosenListener(textPane);
 		btnImportFile.addActionListener(fileListner);
@@ -63,6 +62,9 @@ public class XMLBase extends JFrame {
 		contentPane.add(btnNVerifyFile);
 		
 		XMLVerifyListener xmlVer = new XMLVerifyListener(textPane);
+		
+		JButton btnSave = new JButton("Verify and Save");
+		contentPane.add(btnSave);
 		btnNVerifyFile.addActionListener(xmlVer);
 	}
 
