@@ -25,6 +25,10 @@ public class FileChosenListener implements ActionListener{
 		this.txt = txt;
 	}
 	
+	public File getFile(){
+		return f;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JFileChooser fm = new JFileChooser();
