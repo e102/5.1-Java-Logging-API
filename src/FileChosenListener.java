@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -28,23 +29,9 @@ public class FileChosenListener implements ActionListener{
 		int open = fm.showOpenDialog(null);
 		if(open == fm.APPROVE_OPTION){
 			FileStorage.f = fm.getSelectedFile();	//fetches file
-			parseFile();
+			txt.setForeground(Color.BLACK);
+			txt.setText("File fetched. Location = " + FileStorage.f.getAbsolutePath() +
+					" \n Press Verify and Display to proceed");
 		}
 	}
-	
-	public void parseFile(){
-		DocumentBuilderFactory docFact = DocumentBuilderFactory.newInstance();
-		try {
-			DocumentBuilder docBuild = docFact.newDocumentBuilder();
-			Document doc = docBuild.parse(FileStorage.f);
-			doc.getDocumentElement().normalize();	//Collapses text on multiple lines.
-			
-			Element root = doc.getDocumentElement();
-			fileText += root.getTextContent();
-			txt.setText(fileText);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

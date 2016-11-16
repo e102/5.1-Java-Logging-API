@@ -15,6 +15,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import java.awt.ScrollPane;
 import javax.swing.BoxLayout;
+import java.awt.Color;
 
 public class XMLBase extends JFrame {
 
