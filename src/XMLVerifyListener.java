@@ -11,17 +11,14 @@ import org.w3c.dom.Element;
 
 public class XMLVerifyListener implements ActionListener{
 	
-	private File f;
 	private JTextArea txt;
 	
-	public XMLVerifyListener(File f, JTextArea txt){
-		this.f = f;
+	public XMLVerifyListener(JTextArea txt){
 		this.txt = txt;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println(f.getAbsolutePath());
 		parseFile();
 	}
 	
@@ -32,7 +29,7 @@ public class XMLVerifyListener implements ActionListener{
 		try{
 			DocumentBuilder docBuild = docFact.newDocumentBuilder();
 			docBuild.setErrorHandler(new ParseErrorHandler());
-			Document doc = docBuild.parse(f);
+			Document doc = docBuild.parse(FileStorage.f);
 			System.out.println("Everything is a-okay :/)");
 		}
 		catch(Exception e){

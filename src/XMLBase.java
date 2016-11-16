@@ -36,7 +36,6 @@ public class XMLBase extends JFrame {
 	 * Create the frame.
 	 */
 	public XMLBase() {
-		File selectedFile = null;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 492, 612);
@@ -56,13 +55,13 @@ public class XMLBase extends JFrame {
 		scrollPane.add(textPane);
 		textPane.setEditable(false);
 		
-		FileChosenListener fileListner = new FileChosenListener(selectedFile, textPane);
+		FileChosenListener fileListner = new FileChosenListener(textPane);
 		btnImportFile.addActionListener(fileListner);
 		
 		JButton btnNVerifyFile = new JButton("Verify File");
 		contentPane.add(btnNVerifyFile);
 		
-		XMLVerifyListener xmlVer = new XMLVerifyListener(selectedFile, textPane);
+		XMLVerifyListener xmlVer = new XMLVerifyListener(textPane);
 		btnNVerifyFile.addActionListener(xmlVer);
 	}
 
