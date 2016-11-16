@@ -30,10 +30,11 @@ public class XMLVerifyListener implements ActionListener{
 			DocumentBuilder docBuild = docFact.newDocumentBuilder();
 			docBuild.setErrorHandler(new ParseErrorHandler());
 			Document doc = docBuild.parse(FileStorage.f);
-			System.out.println("Everything is a-okay :/)");
+			System.out.println("Everything is a-okay :)");
 		}
 		catch(Exception e){
 			System.out.println("Something went really wrong");
+			System.out.println(e.getMessage());
 		}
 //		NodeList nlist = doc.getElementsByTagName("*");
 //		for (int i = 0; i < nlist.getLength(); i++) {
