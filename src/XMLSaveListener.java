@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -43,6 +45,14 @@ public class XMLSaveListener implements ActionListener {
 			docBuild.setErrorHandler(new ParseErrorHandler());
 
 			Document doc = docBuild.parse(FileStorage.f);
+			
+			// At this point, if the XML was flawed the exception code would have executed
+			fileText = txt.getText();
+			
+			BufferedWriter writer = new BufferedWriter(new FileWriter(FileStorage.f));
+			writer.write(fileText);
+			writer.close();
+			
 		}
 		catch(Exception e){
 			txt.setForeground(Color.RED);

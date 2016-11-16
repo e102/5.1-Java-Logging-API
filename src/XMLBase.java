@@ -64,6 +64,7 @@ public class XMLBase extends JFrame {
 		XMLVerifyListener xmlVer = new XMLVerifyListener(textPane);
 		
 		JButton btnSave = new JButton("Verify and Save");
+		btnSave.addActionListener(new XMLSaveListener(textPane));
 		contentPane.add(btnSave);
 		btnNVerifyFile.addActionListener(xmlVer);
 	}
